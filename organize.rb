@@ -19,3 +19,33 @@ files.each do |file|
     end
   end
 end
+
+users_list.each do |person|
+  person.each do |data|
+    data.chop! if data.include?("\n")
+    data.gsub!("-", "/") if data.include?("-")
+  end
+  if person.count > 5
+    person.delete_at(2)
+    if person[2] == "M"
+      person[2] = "Male"
+    else
+      person[2] = "Female"
+    end
+  end
+  if person.last.include?("/")
+    birthdate = person.pop
+    color = person.pop
+    person << birthdate
+    person << color
+  end
+
+  if person[3].split("/")[1].to_i > 12
+    date = person[3].split("/")
+    month = date.shift
+    day = date.shift
+    date.unshift(month).unshift(day)
+    date
+    person[3] = date.join("/")
+  end
+end
