@@ -49,3 +49,34 @@ users_list.each do |person|
     person[3] = date.join("/")
   end
 end
+
+option_1 = users_list.sort do |x,y|
+  c = x[2] <=> y[2]
+  c.zero? ? (x[0] <=> y[0]) : c
+end
+
+option_2 = users_list.sort do |x,y|
+  case_1 = Date.parse(x[3])
+  case_2 = Date.parse(y[3])
+  c = case_1 <=> case_2
+end
+
+option_3 = users_list.sort do |x,y|
+  c = y[0] <=> x[0]
+end
+
+option_1.map! do |list|
+  list.join(" ")
+end
+
+option_2.map! do |list|
+  list.join(" ")
+end
+
+option_3.map! do |list|
+  list.join(" ")
+end
+
+options = [option_1, option_2, option_3]
+
+Parser.export(options)
