@@ -1,12 +1,15 @@
 require "./parser"
 require "./person"
 require "date"
-
 input_files = ARGV
-files = []
-input_files.each do |file|
+
+def get_files input_files
+  files = []
+  input_files.each do |file|
   files << Parser.import(file)
+  end
 end
+
 users_list = []
 files.each do |file|
   file.each do |person|
