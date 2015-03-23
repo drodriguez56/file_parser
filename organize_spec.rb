@@ -20,6 +20,18 @@ describe Organizer do
   end
 
   describe "Extract Users" do
+    let(:files){ organizer.extract_users([["Rodriguez, Daniel, Male, 10/10/1023, black"]]) }
+    it "should return an Array" do
+      expect(files).to be_instance_of(Array)
+    end
+
+    it "should not be empty" do
+      expect(files).not_to be_empty
+    end
+
+    it "shuld have the first entry of length 5" do
+      files.each{ |entry| expect(entry.length).to be(5) }
+    end
 
   end
 
