@@ -1,15 +1,75 @@
 require_relative 'organize'
+require_relative 'parser'
 
+describe Organizer do
 
+  let(:organizer) { Organizer.new }
 
-describe "this" do
+  describe "Get files" do
 
-  describe "this" do
-    it "this" do
+    context "valid file" do
+      it "should return an Array" do
+          expect(organizer.get_files(["comma_delimited.txt"])).to be_instance_of(Array)
+      end
+    end
 
+    context "Invalid file" do
+      xit "should return false if file is invalid" do
+      end
     end
   end
 
+  describe "Extract Users" do
+
+  end
+
+  describe "Organize data" do
+
+  end
+
+  describe "Sort" do
+
+    context "Sort by gender and first name ascending" do
+    end
+
+    context "sort by birthdate ascending" do
+    end
+
+    context "Sort by name descending" do
+    end
+
+  end
+
+  describe "Join data" do
+
+  end
+
+  describe "Save list" do
+  end
 
 end
 
+describe Parser do
+
+  let(:file) { Parser.import("comma_delimited.txt") }
+
+  context "Import" do
+    it "shuld be an Array" do
+       expect(file).to be_instance_of(Array)
+    end
+
+    it "shuild not be empty" do
+      expect(file).not_to be_empty
+    end
+
+  end
+
+  context "Export" do
+    it "shuld create a new file" do
+      Parser.export([["hello"],["world"]])
+      expect(File.file?('output.txt')).to be(true)
+    end
+
+  end
+
+end
